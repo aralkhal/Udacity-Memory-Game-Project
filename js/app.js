@@ -104,13 +104,16 @@ for(var i = 0; i < collection.length; i++) {
 
 function bindClick(i) {
  return function() {
-     console.log("you clicked region number " + i);
-     item = collection[i];
-     console.log(item);
-     openCard(item);
+    console.log("you clicked region number " + i);
+    item = collection[i];
+    console.log(item);
 
-     counter++;
-     document.querySelector('.moves').innerHTML = counter;
+    if(item.classList.contains("open") == false){
+        openCard(item);
+    
+        counter++; // count the moves
+        document.querySelector('.moves').innerHTML = counter;
+    }
  };
 }
 
@@ -136,6 +139,7 @@ function openCard(item) {
             openCards = [];
             
             // Add counter to check if all cards got matched
+            
             countCards ++; // can add another check if cards == each other and i != i
             if(countCards == 8)
             {
